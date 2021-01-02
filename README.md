@@ -58,7 +58,7 @@ Simple config example:
     ],
     "platforms": [
     {
-        "platform": "YaleLinkBridge",
+        "platform": "YaleLinkPlatform",
         "loginId": "example@gmail.com",
         "isNoOtherTerminal": false,
         "terminalId": "FFFFFFFFFFFF",

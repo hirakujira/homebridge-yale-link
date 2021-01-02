@@ -57,7 +57,7 @@ Yale 在不同地區販售不同型號的電子鎖，此套件僅適用在亞洲
     ],
     "platforms": [
     {
-        "platform": "YaleLinkBridge",
+        "platform": "YaleLinkPlatform",
         "loginId": "example@gmail.com",
         "isNoOtherTerminal": false,
         "terminalId": "FFFFFFFFFFFF",
