@@ -1,0 +1,55 @@
+{
+  "pluginAlias": "YaleLinkPlatform",
+  "pluginType": "platform",
+  "singular": true,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "loginId": {
+        "title": "Google Account",
+        "type": "string",
+        "required": true,
+        "format": "email",
+        "placeholder": "example@gmail.com"
+      },
+      "isNoOtherTerminal": {
+        "title": "No other phone terminals",
+        "type": "boolean",
+        "default": false,
+        "description": "Please read the description in README.md to understand what happenes when this option set to true."
+      },
+      "terminalId": {
+        "title": "Terminal ID",
+        "type": "string",
+        "required": true,
+        "placeholder": "FFFFFFFFFFFF",
+        "default": "FFFFFFFFFFFF",
+        "pattern": "^([A-Fa-f0-9]{12})$",
+        "description": "Please follow the tutorial in README.md to get terminalId."
+      },
+      "accessories": {
+        "type": "array",
+        "items": {
+          "title": "Devices",
+          "type": "object",
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "placeholder": "Enter your lock name here...",
+              "required": true
+            },
+            "deviceId": {
+              "type": "string",
+              "required": true,
+              "placeholder": "FFFFFFFFFFFF",
+              "default": "FFFFFFFFFFFF",
+              "pattern": "^([A-Fa-f0-9]{12})$",
+              "description": "Please follow the tutorial in README.md to get deviceId."
+            }
+          }
+        }
+      }
+    }
+  }
+}
