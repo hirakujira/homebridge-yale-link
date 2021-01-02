@@ -13,9 +13,9 @@
 
 ## 硬體需求
 
-Yale 在不同地區販售不同型號的電子鎖，此套件僅適用在亞洲地區販售的 Yale 電子鎖以及 Yale Link Bridge。
+Yale 在不同地區販售不同型號的電子鎖，此套件僅適用在亞洲地區販售的 Yale 電子鎖、藍牙模組，以及 Yale Link Bridge。
 
-請確認您的 Yale 電子鎖、藍牙模組以及 Yale Link Bridge 在下方的列表中，且外型一致。
+請確認您的裝置在下方的列表中，且外型如連結中的圖片一致。您必須要「同時有以下三種裝置」才能使用本套件。
 
 * [支援遠端解鎖的 Yale 電子鎖](https://www.yaletaiwanstore.com.tw/product_category/yale-link)
 * [Yale Link 藍牙模組](https://www.yalehome.co.in/en/products/products-categories/smart-products/accessories/yale-link-bluetooth-module/)

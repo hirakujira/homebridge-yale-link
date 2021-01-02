@@ -16,7 +16,7 @@ This is a homebridge plugin that add HomeKit compatibility to your Yale Link Bri
 
 Yale sales different model of locks and bridges in different countries. This plugin only works for Asian models.
 
-Please make sure your Yale Link Bluetooth Module and Yale Link Bridge are same as the items in the following links.
+Please make sure your Yale lock, bluetooth module and Yale Link Bridge are same as the items in the following links. You need to have all 3 kind of devices to use this plugin.
 
 * [A Yale lock which is compatible with Yale Link](https://www.yaletaiwanstore.com.tw/product_category/yale-link)
 * [Yale Link Bluetooth Module](https://www.yalehome.co.in/en/products/products-categories/smart-products/accessories/yale-link-bluetooth-module/)
