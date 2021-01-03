@@ -1,8 +1,5 @@
-
 <p align="center">
-
-<img src="https://github.com/homebridge/branding/raw/master/logos/homebridge-wordmark-logo-vertical.png" width="150">
-
+<img src="./logo.png" width="300">
 </p>
 
 
@@ -11,6 +8,7 @@
 # Yale Link Homebridge Plugin
 
 This is a homebridge plugin that add HomeKit compatibility to your Yale Link Bridge devices.
+
 
 ## Hardware Requirement
 
@@ -77,7 +75,12 @@ Simple config example:
 | **Attributes** | **Required** | **Usage** | **Default** | **Options** |
 |----------------|--------------|-----------|-------------|-------------|
 | loginId | **YES** | The account to login Yale Link | 
-| isNoOtherTerminal |  | Yale Link Bridge only allows one device to connect it in the same time. So the app must ask the server to give permission everytime, which casues more delay when controlling the lock. If this option set to **true**, then this plugin won't ask for permission everytime and boost the response latency. However, if you use both Yale Link app with bridge (WiFi control) and homebridge, this would cause conflicts and make homebridge plugin not to work. | false | true/false
 | terminalId | **YES** | An ID of your device, which is generated randomly when you install Yale Link app | FFFFFFFFFFFF |
+| isNoOtherTerminal |  | Yale Link Bridge only allows one device to connect it in the same time. So the app must ask the server to give permission everytime, which casues more delay when controlling the lock. If this option set to **true**, then this plugin won't ask for permission everytime and boost the response latency. However, if you use both Yale Link app with bridge (WiFi control) and homebridge, this would cause conflicts and make homebridge plugin not to work. | false | true/false
+| debug | | Debug mode. Show more detailed messages in the log. | false | true/false
 | accessories.name | **YES** | Name of the lock | |
 | accessories.deviceId | **YES** | An unique ID of the bluetooth module | FFFFFFFFFFFF |
+
+## Demo
+
+![Demo](https://i.imgur.com/NV48AA9.gif)

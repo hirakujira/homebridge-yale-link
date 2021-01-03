@@ -1,9 +1,7 @@
-
 <p align="center">
-
-<img src="https://github.com/homebridge/branding/raw/master/logos/homebridge-wordmark-logo-vertical.png" width="150">
-
+<img src="./logo.png" width="300">
 </p>
+
 
 [English version](./README.md)
 
@@ -76,7 +74,12 @@ Yale 在不同地區販售不同型號的電子鎖，此套件僅適用在亞洲
 | **名詞** | **必須** | **說明** | **預設值** | **選項** |
 |----------------|--------------|-----------|-------------|-------------|
 | loginId | **YES** | Yale Link 的登入 ID | 
-| isNoOtherTerminal |  | 由於 Yale Link Bridge 每次只允許一個裝置操作，因此 App 每次在使用時，會先跟伺服器要求控制權，再進行操作。這個行為使得控制門鎖時，會延遲幾秒鐘。若此選項設定為 **true**，則此套件不會每次都先要求控制權再操作，這樣可以大幅增加門鎖的反應速度。然而，若您同時有其他手機連到 Yale Link Bridge，則開啟此設定會使得此套件進行操作時失效。 | false | true/false
 | terminalId | **YES** | 手機的 UUID，每次重新安裝 Yale Link 時會隨機生成 | FFFFFFFFFFFF |
+| isNoOtherTerminal |  | 由於 Yale Link Bridge 每次只允許一個裝置操作，因此 App 每次在使用時，會先跟伺服器要求控制權，再進行操作。這個行為使得控制門鎖時，會延遲幾秒鐘。若此選項設定為 **true**，則此套件不會每次都先要求控制權再操作，這樣可以大幅增加門鎖的反應速度。然而，若您同時有其他手機連到 Yale Link Bridge，則開啟此設定會使得此套件進行操作時失效。 | false | true/false
+| debug | | 開啟除錯模式，會顯示更多的訊息。  | false | true/false
 | accessories.name | **YES** | 門鎖的名稱 | |
 | accessories.deviceId | **YES** | 藍牙模組的 ID | FFFFFFFFFFFF |
+
+## Demo
+
+![Demo](https://i.imgur.com/NV48AA9.gif)
