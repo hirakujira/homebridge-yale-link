@@ -1,7 +1,7 @@
 {
-  "displayName": "HomeBridge Yale Link",
+  "displayName": "Homebridge Yale Link",
   "name": "homebridge-yale-link",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Control your Yale lock with Homebridge.",
   "license": "Apache-2.0",
   "repository": {

@@ -32,17 +32,18 @@ After Homebridge has been installed:
 
 I strongly suggeset the lock be set to 'Master Mode' before setup this plugin because only Master Mode can delete specific bluetooth device instead of reset all devices.
 
-1. Install Yale Link app on your iPhone, then pair the lock to your iPhone normally.
-2. Login Yale Link with Google Account. This plugin only supports Google Account now.
-3. Connect to Yale Link Bridge in the app and make sure that it works. (Can unlock / lock the door with WiFi instead of bluetooth.)
-4. Delete the Yale Link App from your iPhone. DO NOT LOGOUT BEFORE YOU DELETE IT.
-5. Add the following example config to your Homebridge config. Change `loginId` to your Google Account. Leave `terminalId` and `deviceId` as `FFFFFFFFFFFF` if you don't know the real IDs.
-6. Run Homebridge, now you would see an instruction which shows a link to Google authentication URL. Open the link and login with the same Google Account you filled in the config.
-7. After login your account, it would show a blank page. Open developer tool in your browser and run this script to console to show the access token directly:
+1. If you already installed Yale Link app on your iPhone and paired with your lock, please unpair the lock and delete the Yale Link app.
+2. Reinstall Yale Link app on your iPhone, then pair the lock to your iPhone normally.
+3. Login Yale Link with Google Account. This plugin only supports Google Account now.
+4. Connect to Yale Link Bridge in the app and make sure that it works. (Can unlock / lock the door with WiFi instead of bluetooth.)
+5. Delete the Yale Link App from your iPhone. DO NOT LOGOUT BEFORE YOU DELETE IT.
+6. Add the following example config to your Homebridge config. Change `loginId` to your Google Account. Leave `terminalId` and `deviceId` as `FFFFFFFFFFFF` if you don't know the real IDs.
+7. Run Homebridge, now you would see an instruction which shows a link to Google authentication URL. Open the link and login with the same Google Account you filled in the config.
+8. After login your account, it would show a blank page. Open developer tool in your browser and run this script to console to show the access token directly:
 `let regex = new RegExp(/access_token\\\" \: \\\"(.*)\\\",/gi); regex.exec(document.getElementsByTagName("script")[0].innerHTML.match(regex))[1];`
-8. Copy the token starts with `ya29.` and paste it to `yalelink_token` file which is in the same directory of `config.json` of Homebridge. Save the file, and then restart Homebridge.
-9. After restart, it would show the terminalId and deviceId. Paste them to your config and restart again.
-10. Now you can install Yale Link and pair to your lock again on your iPhone. Remember, don't delete the paired device in previous steps or you need to follow this tutorial from 1. again.
+9. Copy the token starts with `ya29.` and paste it to `yalelink_token` file which is in the same directory of `config.json` of Homebridge. Save the file, and then restart Homebridge.
+10. After restart, it would show the terminalId and deviceId. Paste them to your config and restart again.
+11. Now you can install Yale Link and pair to your lock again on your iPhone. Remember, don't delete the paired device in previous steps or you need to follow this tutorial from 1. again.
 
 ## Config
 
