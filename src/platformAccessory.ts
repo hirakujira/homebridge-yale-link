@@ -114,7 +114,7 @@ export class YaleLinkPlatformAccessory {
         isLocked = status === this.platform.Characteristic.LockCurrentState.UNSECURED ? false : true;
         this.targetToLock = isLocked;
 
-        this.log.debug('Get Characteristic LockCurrentState from API: ', isLocked);
+        // this.log.debug('Get Characteristic LockCurrentState from API: ', isLocked);
         this.service.updateCharacteristic(this.platform.Characteristic.LockTargetState, isLocked);
       }
 
@@ -126,7 +126,7 @@ export class YaleLinkPlatformAccessory {
   }
 
   getLockTargetState(callback: CharacteristicGetCallback) {
-    this.log.debug('Get Characteristic lock target ->', this.targetToLock);
+    // this.log.debug('Get Characteristic lock target ->', this.targetToLock);
     callback(null, this.targetToLock);
   }
 
@@ -140,7 +140,7 @@ export class YaleLinkPlatformAccessory {
     if (connect) {
       await this.lockDevice(value, this.accessory.context.device.deviceId);
       this.service.getCharacteristic(this.platform.Characteristic.LockCurrentState).updateValue(value);
-      this.log.debug('Set Characteristic lock target ->', value);
+      // this.log.debug('Set Characteristic lock target ->', value);
       this.targetToLock = value as boolean;
 
       // update status automatically after clicking accessory
@@ -191,7 +191,7 @@ export class YaleLinkPlatformAccessory {
         throw (result);
       }
 
-      this.log.debug('Connect to bridge succfully');
+      // this.log.debug('Connect to bridge succfully');
       return true;
     } catch (error) {
       this.log.error('Failed to connect to bridge: ' + JSON.stringify(error.response.data));
@@ -246,7 +246,7 @@ export class YaleLinkPlatformAccessory {
         }
       }
 
-      this.log.debug('Lock status: ' + status);
+      // this.log.debug('Lock status: ' + status);
       return status;
     } catch (error) {
       this.log.error('Failed to get lock status: ' + JSON.stringify(error.response.data));
@@ -288,7 +288,7 @@ export class YaleLinkPlatformAccessory {
       }
 
       const status = lockState === this.platform.Characteristic.LockTargetState.UNSECURED ? 'unlock' : 'lock';
-      this.log.debug('Set device to ' + status + ' successfully');
+      // this.log.debug('Set device to ' + status + ' successfully');
       return true;
     } catch (error) {
       this.log.error('Failed to control device: ' + JSON.stringify(error.response.data));

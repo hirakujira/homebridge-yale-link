@@ -34,9 +34,7 @@ export class YaleLinkPlatform implements DynamicPlatformPlugin {
     public readonly api: API,
   ) {
 
-    this.log.debug('Finished initializing platform: Yale Link');
     this.api.on('didFinishLaunching', async () => {
-      log.debug('Executed didFinishLaunching callback');
 
       this.storagePath = api.user.storagePath() + '/' + 'yalelink_token';
 
@@ -230,7 +228,7 @@ regex.exec(document.getElementsByTagName("script")[0].innerHTML.match(regex))[1]
   }
 
   async refreshToken() {
-    this.log.debug('Refresh auth token via Google.');
+    // this.log.debug('Refresh auth token via Google.');
 
     let request, response, result;
     try {
@@ -242,7 +240,7 @@ regex.exec(document.getElementsByTagName("script")[0].innerHTML.match(regex))[1]
         data: { 'account': this.accountInfo },
       };
 
-      this.log.debug('Old token: ' + JSON.stringify(this.accountInfo));
+      // this.log.debug('Old token: ' + JSON.stringify(this.accountInfo));
       response = await axios(request);
 
       if (response === undefined) {
@@ -258,7 +256,7 @@ regex.exec(document.getElementsByTagName("script")[0].innerHTML.match(regex))[1]
       }
 
       // update token
-      this.log.debug('Token refreshed successfully. New token: ' + result.access_token);
+      // this.log.debug('Token refreshed successfully. New token: ' + result.access_token);
       this.token = result.access_token;
       this.accountInfo['sso_token'] = result.access_token;
 
@@ -374,7 +372,7 @@ regex.exec(document.getElementsByTagName("script")[0].innerHTML.match(regex))[1]
   updateTokenConfig(token: string) {
     try {
       fs.writeFileSync(this.storagePath, token, 'utf8');
-      this.log.debug('Token config updated: ' + this.storagePath);
+      // this.log.debug('Token config updated: ' + this.storagePath);
 
       return true;
     } catch (error) {

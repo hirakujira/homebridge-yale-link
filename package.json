@@ -23,7 +23,12 @@
     "prepublishOnly": "npm run lint && npm run build"
   },
   "keywords": [
-    "homebridge-plugin"
+    "homebridge-plugin",
+    "yale",
+    "yale+link",
+    "door+lock",
+    "lock",
+    "irevo"
   ],
   "dependencies": {
     "axios": "^0.21.1"
