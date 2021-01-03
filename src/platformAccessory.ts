@@ -287,7 +287,7 @@ export class YaleLinkPlatformAccessory {
         throw (result);
       }
 
-      const status = lockState === this.platform.Characteristic.LockTargetState.UNSECURED ? 'unlock' : 'lock';
+      // const status = lockState === this.platform.Characteristic.LockTargetState.UNSECURED ? 'unlock' : 'lock';
       // this.log.debug('Set device to ' + status + ' successfully');
       return true;
     } catch (error) {
