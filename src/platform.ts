@@ -1,14 +1,15 @@
 import { API, DynamicPlatformPlugin, Logger, PlatformAccessory, PlatformConfig, Service, Characteristic } from 'homebridge';
-
 import { PLATFORM_NAME, PLUGIN_NAME } from './settings';
 import { YaleLinkPlatformAccessory } from './platformAccessory';
 import axios from 'axios';
 import fs from 'fs';
+
 export interface BLEDevice {
   name: string;
   deviceId: string;
   extraString: string;
 }
+
 export class YaleLinkPlatform implements DynamicPlatformPlugin {
   public readonly Service: typeof Service = this.api.hap.Service;
   public readonly Characteristic: typeof Characteristic = this.api.hap.Characteristic;
@@ -273,7 +274,6 @@ regex.exec(document.getElementsByTagName("script")[0].innerHTML.match(regex))[1]
   }
 
   discoverDevices() {
-
     const devices = this.config.accessories ? this.config.accessories : [];
 
     // Cleanup removed accessories
@@ -345,7 +345,6 @@ regex.exec(document.getElementsByTagName("script")[0].innerHTML.match(regex))[1]
   }
 
   setupTokenConfig() {
-
     if (fs.existsSync(this.storagePath)) {
       try {
 
@@ -377,6 +376,7 @@ regex.exec(document.getElementsByTagName("script")[0].innerHTML.match(regex))[1]
       this.debug('Token config updated: ' + this.storagePath);
 
       return true;
+
     } catch (error) {
       this.log.error('Cannot write file from data. Please check content of ' +
         this.storagePath +

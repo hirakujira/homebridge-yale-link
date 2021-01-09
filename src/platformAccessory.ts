@@ -1,5 +1,4 @@
 import { Service, PlatformAccessory, CharacteristicValue, CharacteristicSetCallback, CharacteristicGetCallback } from 'homebridge';
-
 import { YaleLinkPlatform } from './platform';
 import axios from 'axios';
 
@@ -33,11 +32,6 @@ export class DeviceCommand {
   }
 }
 
-/**
- * Platform Accessory
- * An instance of this class is created for each accessory your platform registers
- * Each accessory may expose multiple services of different service types.
- */
 export class YaleLinkPlatformAccessory {
   private service: Service;
   private readonly config;
@@ -74,16 +68,6 @@ export class YaleLinkPlatformAccessory {
       .on('set', this.setLockTargetState.bind(this))
       .on('get', this.getLockTargetState.bind(this));
 
-    // setInterval(() => {
-    //   // get current lock status every 10 seconds. this may drain battery.
-    //   this.getLockCurrentState((error, value) => {
-    //     if (!error) {
-    //       this.log.debug("Current LockCurrentState: " + value);
-    //       this.service.updateCharacteristic(this.platform.Characteristic.LockCurrentState, value as boolean);
-    //       this.service.updateCharacteristic(this.platform.Characteristic.LockTargetState, value as boolean);
-    //     }
-    //   });
-    // }, 10 * 1000);
     this.connectToBridge(this.accessory.context.device.deviceId);
 
     // If Homebridge is the only terminal of Yale lock, then connect to bridge every 10 minutes
@@ -248,6 +232,7 @@ export class YaleLinkPlatformAccessory {
 
       this.platform.debug('Lock status: ' + status);
       return status;
+
     } catch (error) {
       this.log.error('Failed to get lock status: ' + JSON.stringify(error.response.data));
     }
@@ -290,10 +275,11 @@ export class YaleLinkPlatformAccessory {
       const status = lockState === this.platform.Characteristic.LockTargetState.UNSECURED ? 'unlock' : 'lock';
       this.platform.debug('Set device to ' + status + ' successfully');
       return true;
+
     } catch (error) {
       this.log.error('Failed to control device: ' + JSON.stringify(error.response.data));
     }
+
     return false;
   }
-
 }
