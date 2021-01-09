@@ -83,4 +83,4 @@ Simple config example:
 
 ## Demo
 
-![Demo](https://i.imgur.com/NV48AA9.gif)
+![Demo](https://i.imgur.com/Crgf7Rm.gif)
