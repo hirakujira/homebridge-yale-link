@@ -186,6 +186,7 @@ regex.exec(document.getElementsByTagName("script")[0].innerHTML.match(regex))[1]
     } catch (error) {
       error.status = error.response && error.response.status;
       this.log.error('Failed to login with SSO token, please try again. Error: ' + error.status);
+      this.log.error('Account info: ' + JSON.stringify(this.accountInfo));
     }
 
     return false;

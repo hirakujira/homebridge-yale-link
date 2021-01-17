@@ -82,4 +82,4 @@ Yale 在不同地區販售不同型號的電子鎖，此套件僅適用在亞洲
 
 ## Demo
 
-![Demo](https://i.imgur.com/NV48AA9.gif)
+![Demo](https://i.imgur.com/Crgf7Rm.gif)
