@@ -178,7 +178,7 @@ export class YaleLinkPlatformAccessory {
       this.platform.debug('Connect to bridge succfully');
       return true;
     } catch (error) {
-      this.log.error('Failed to connect to bridge: ' + JSON.stringify(error.response.data));
+      this.log.error('Failed to connect to bridge: ' + JSON.stringify(error));
     }
 
     return false;
@@ -234,7 +234,7 @@ export class YaleLinkPlatformAccessory {
       return status;
 
     } catch (error) {
-      this.log.error('Failed to get lock status: ' + JSON.stringify(error.response.data));
+      this.log.error('Failed to get lock status: ' + JSON.stringify(error));
     }
 
     return status;
@@ -277,7 +277,7 @@ export class YaleLinkPlatformAccessory {
       return true;
 
     } catch (error) {
-      this.log.error('Failed to control device: ' + JSON.stringify(error.response.data));
+      this.log.error('Failed to control device: ' + JSON.stringify(error));
     }
 
     return false;

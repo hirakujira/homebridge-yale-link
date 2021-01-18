@@ -52,7 +52,6 @@ export class YaleLinkPlatform implements DynamicPlatformPlugin {
         'terminal_id': this.terminalId,
         'sso_token': this.token,
         'app_type': 'ios',
-        'language': 'zh-Hant',
         'fcm_token': this.terminalId === '' ? 'FFFFFFFFFFFF' : this.terminalId,
         'user_id': this.config.loginId + '/google',
       };
