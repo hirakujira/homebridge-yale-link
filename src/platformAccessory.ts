@@ -37,6 +37,8 @@ export class YaleLinkPlatformAccessory {
   private readonly config;
   private log;
   private targetToLock = true;
+  private debugMode = false;
+  private currentIsError = false;
 
   constructor(
     private readonly platform: YaleLinkPlatform,
@@ -45,6 +47,7 @@ export class YaleLinkPlatformAccessory {
 
     this.config = this.platform.config;
     this.log = this.platform.log;
+    this.debugMode = this.config.debug !== undefined ? this.config.debug as boolean : false;
 
     // set accessory information
     this.accessory.getService(this.platform.Service.AccessoryInformation)!
@@ -175,10 +178,17 @@ export class YaleLinkPlatformAccessory {
         throw (result);
       }
 
-      this.platform.debug('Connect to bridge succfully');
+      if (this.currentIsError === true || this.debugMode === true) {
+        this.log.debug('Connect to bridge succfully');
+        this.currentIsError = false;
+      }
+
       return true;
     } catch (error) {
-      this.log.error('Failed to connect to bridge: ' + JSON.stringify(error));
+      
+      this.currentIsError = true;
+      const error_msg = error['message'] && this.debugMode === false ? error['message'] : JSON.stringify(error);
+      this.log.error('Failed to connect to bridge: ' + error_msg);
     }
 
     return false;
@@ -230,11 +240,18 @@ export class YaleLinkPlatformAccessory {
         }
       }
 
-      this.platform.debug('Lock status: ' + status);
+      
+      if (this.currentIsError === true || this.debugMode === true) {
+        this.platform.debug('Lock status: ' + status);
+        this.currentIsError = false;
+      }
+      
       return status;
 
     } catch (error) {
-      this.log.error('Failed to get lock status: ' + JSON.stringify(error));
+      this.currentIsError = true;
+      const error_msg = error['message'] && this.debugMode === false ? error['message'] : JSON.stringify(error);
+      this.log.error('Failed to get lock status: ' + error_msg);
     }
 
     return status;
