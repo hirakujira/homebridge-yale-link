@@ -5,9 +5,7 @@ import axios from 'axios';
 import fs from 'fs';
 
 export interface BLEDevice {
-  name: string;
   deviceId: string;
-  extraString: string;
 }
 
 export class YaleLinkPlatform implements DynamicPlatformPlugin {

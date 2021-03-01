@@ -60,7 +60,7 @@ export class YaleLinkPlatformAccessory {
       this.accessory.addService(this.platform.Service.LockMechanism);
 
     // set the service name, this is what is displayed as the default name on the Home app
-    this.service.setCharacteristic(this.platform.Characteristic.Name, accessory.context.device.name);
+    this.service.setCharacteristic(this.platform.Characteristic.Name, 'Yale Lock');
 
     // register handlers for the LockCurrentState Characteristic
     this.service.getCharacteristic(this.platform.Characteristic.LockCurrentState)
