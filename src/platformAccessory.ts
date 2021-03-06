@@ -204,7 +204,7 @@ export class YaleLinkPlatformAccessory {
     const randomHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16).toUpperCase()).join('');
     const deviceCommand = new DeviceCommand('11A0' + randomHex(2) + '0000', this.config.terminalId, deviceId);
 
-    let status = this.platform.Characteristic.LockCurrentState.UNKNOWN;
+    let status = this.platform.Characteristic.LockCurrentState.SECURED;
     let request, response, result;
 
     try {
