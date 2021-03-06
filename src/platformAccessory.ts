@@ -39,6 +39,7 @@ export class YaleLinkPlatformAccessory {
   private targetToLock = true;
   private debugMode = false;
   private currentIsError = false;
+  private currentState = this.platform.Characteristic.LockCurrentState.SECURED;
 
   constructor(
     private readonly platform: YaleLinkPlatform,
@@ -81,35 +82,12 @@ export class YaleLinkPlatformAccessory {
     }
   }
 
-  async getLockCurrentState(callback: CharacteristicGetCallback) {
+  getLockCurrentState(callback: CharacteristicGetCallback) {
 
-    // Default to lock
-    let isLocked = true;
-    this.service.updateCharacteristic(this.platform.Characteristic.LockTargetState, isLocked);
-
-    try {
-
-      // connect to bridge first
-      let connect = this.platform.config.isNoOtherTerminal;
-      if (connect !== true) {
-        connect = await this.connectToBridge(this.accessory.context.device.deviceId);
-      }
-
-      if (connect) {
-
-        const status = await this.getLockStatus(this.accessory.context.device.deviceId);
-        isLocked = status === this.platform.Characteristic.LockCurrentState.UNSECURED ? false : true;
-        this.targetToLock = isLocked;
-
-        this.platform.debug('Get Characteristic LockCurrentState from API: ' + isLocked);
-        this.service.updateCharacteristic(this.platform.Characteristic.LockTargetState, isLocked);
-      }
-
-    } catch (error) {
-      this.log.error('Get Characteristic LockCurrentState from API failed:', error);
-    }
-
-    callback(null, isLocked);
+    this.service.updateCharacteristic(this.platform.Characteristic.LockTargetState, this.platform.Characteristic.LockTargetState.SECURED);
+    this.getLockStatusFromAPI();
+    
+    callback(null, this.currentState);
   }
 
   getLockTargetState(callback: CharacteristicGetCallback) {
@@ -145,6 +123,29 @@ export class YaleLinkPlatformAccessory {
     }
 
     callback(null);
+  }
+
+  async getLockStatusFromAPI() {
+    try {
+
+      // connect to bridge first
+      let connect = this.platform.config.isNoOtherTerminal;
+      if (connect !== true) {
+        connect = await this.connectToBridge(this.accessory.context.device.deviceId);
+      }
+
+      if (connect) {
+
+        this.currentState = await this.getLockStatus(this.accessory.context.device.deviceId);
+
+        this.platform.debug('Get Characteristic LockCurrentState from API: ' + this.currentState);
+        this.service.updateCharacteristic(this.platform.Characteristic.LockCurrentState, this.currentState);
+        this.service.updateCharacteristic(this.platform.Characteristic.LockTargetState, this.currentState);
+      }
+
+    } catch (error) {
+      this.log.error('Get Characteristic LockCurrentState from API failed:', error);
+    }
   }
 
   async connectToBridge(deviceId: string) {
@@ -218,7 +219,7 @@ export class YaleLinkPlatformAccessory {
       response = await axios(request);
       if (response === undefined) {
         this.log.error('Failed to get lock status, please try again.');
-        return false;
+        return this.platform.Characteristic.LockCurrentState.UNKNOWN;
       }
 
       result = response.data;
