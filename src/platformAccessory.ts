@@ -36,10 +36,11 @@ export class YaleLinkPlatformAccessory {
   private service: Service;
   private readonly config;
   private log;
-  private targetToLock = true;
+  private targetState = this.platform.Characteristic.LockTargetState.SECURED;
+  private currentState = this.platform.Characteristic.LockCurrentState.SECURED;
   private debugMode = false;
   private currentIsError = false;
-  private currentState = this.platform.Characteristic.LockCurrentState.SECURED;
+
 
   constructor(
     private readonly platform: YaleLinkPlatform,
@@ -91,8 +92,8 @@ export class YaleLinkPlatformAccessory {
   }
 
   getLockTargetState(callback: CharacteristicGetCallback) {
-    this.platform.debug('Get Characteristic lock target ->' + this.targetToLock);
-    callback(null, this.targetToLock);
+    this.platform.debug('Get Characteristic lock target ->' + this.targetState);
+    callback(null, this.targetState);
   }
 
   async setLockTargetState(value: CharacteristicValue, callback: CharacteristicSetCallback) {
@@ -106,7 +107,7 @@ export class YaleLinkPlatformAccessory {
       await this.lockDevice(value, this.accessory.context.device.deviceId);
       this.service.getCharacteristic(this.platform.Characteristic.LockCurrentState).updateValue(value);
       this.platform.debug('Set Characteristic lock target ->' + value);
-      this.targetToLock = value as boolean;
+      this.targetState = value as number;
 
       // update status automatically after clicking accessory
       setTimeout(() => {
@@ -118,7 +119,7 @@ export class YaleLinkPlatformAccessory {
 
       // Prevent bug on other devices.
       setTimeout(() => {
-        this.targetToLock = true;
+        this.targetState = this.platform.Characteristic.LockTargetState.SECURED;
       }, 1000);
     }
 
@@ -137,10 +138,12 @@ export class YaleLinkPlatformAccessory {
       if (connect) {
 
         this.currentState = await this.getLockStatus(this.accessory.context.device.deviceId);
+        this.targetState = this.currentState === this.platform.Characteristic.LockCurrentState.UNSECURED ?
+          this.platform.Characteristic.LockTargetState.UNSECURED : this.platform.Characteristic.LockTargetState.SECURED;
 
         this.platform.debug('Get Characteristic LockCurrentState from API: ' + this.currentState);
         this.service.updateCharacteristic(this.platform.Characteristic.LockCurrentState, this.currentState);
-        this.service.updateCharacteristic(this.platform.Characteristic.LockTargetState, this.currentState);
+        this.service.updateCharacteristic(this.platform.Characteristic.LockTargetState, this.targetState);
       }
 
     } catch (error) {
