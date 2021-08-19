@@ -92,11 +92,11 @@ export class YaleLinkPlatform implements DynamicPlatformPlugin {
       // Discover Yale Link devices
       this.discoverDevices();
 
-      setInterval(() => {
+      setInterval(async () => {
         // update token every 10 minutes after starting, if failed, try again in 10 minutes.
         // becase Google token only lives for 3600 seconds, it's unnecessary to retry when it failed too many times.
         if (this.failedTries < 6) {
-          const refreshed = this.refreshToken();
+          const refreshed = await this.refreshToken();
 
           // reset conter if suceesses
           if (refreshed) {
