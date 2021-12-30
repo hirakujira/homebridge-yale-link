@@ -19,6 +19,8 @@ Yale 在不同地區販售不同型號的電子鎖，此套件僅適用在亞洲
 * [Yale Link 藍牙模組](https://www.yalehome.co.in/en/products/products-categories/smart-products/accessories/yale-link-bluetooth-module/)
 * [Yale Link Bridge](https://www.yaletaiwanstore.com.tw/products/yale-link-bridge/)
 
+### ⚠️⚠️⚠️ 此 Homeit 外掛可能不適用於新版 ([Yale Access](https://www.yalehome.com.au/en/products/categories/smart-products/yale-access-kit/)) 橋接器 ⚠️⚠️⚠️
+
 ## 安裝
 
 在 Homebridge 安裝的情況下輸入以下指令：

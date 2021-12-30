@@ -20,6 +20,9 @@ Please make sure your Yale lock, bluetooth module and Yale Link Bridge are same 
 * [Yale Link Bluetooth Module](https://www.yalehome.co.in/en/products/products-categories/smart-products/accessories/yale-link-bluetooth-module/)
 * [Yale Link Bridge](https://www.yaletaiwanstore.com.tw/products/yale-link-bridge/)
 
+### ⚠️⚠️⚠️ This plugin may not work with the new ([Yale Access](https://www.yalehome.com.au/en/products/categories/smart-products/yale-access-kit/)) bridge ⚠️⚠️⚠️
+
+
 ## Installation
 
 After Homebridge has been installed:
